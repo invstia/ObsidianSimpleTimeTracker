@@ -318,18 +318,20 @@ function addEditableTableRow(tracker: Tracker, entry: Entry, table: HTMLTableEle
                     }
                     if (startTimeBox.getValue()) {
                         if (moment(startTimeBox.getValue(), settings.timestampFormat).isValid()) {
-                            entry.startTime = moment(startTimeBox.getValue(), settings.timestampFormat).format("X");
+                            //entry.startTime = moment(startTimeBox.getValue(), settings.timestampFormat).format("X");
+                            entry.startTime = parseInt(moment(startTimeBox.getValue(), settings.timestampFormat).format("X"));
                             startTimePar.setText(entry.startTime ? formatTimestamp(entry.startTime, settings) : "" );
                         } else {
-                            startTimeBox.setText(entry.startTime ? formatTimestamp(entry.startTime, settings) : "" );
+                            startTimeBox.setValue(entry.startTime ? formatTimestamp(entry.startTime, settings) : "" );
                         }
                     }
                     if (endTimeBox.getValue()) {
                         if (moment(endTimeBox.getValue(), settings.timestampFormat).isValid()) {
-                            entry.endTime = moment(endTimeBox.getValue(), settings.timestampFormat).format("X");
+                            //entry.endTime = moment(endTimeBox.getValue(), settings.timestampFormat).format("X");
+                            entry.endTime = parseInt(moment(endTimeBox.getValue(), settings.timestampFormat).format("X"));
                             endTimePar.setText(entry.endTime ? formatTimestamp(entry.endTime, settings) : "" );
                         } else {
-                            endTimeBox.setText(entry.endTime ? formatTimestamp(entry.endTime, settings) : "" );
+                            endTimeBox.setValue(entry.endTime ? formatTimestamp(entry.endTime, settings) : "" );
                         }
                     }
                     await saveTracker(tracker, this.app, getSectionInfo());
